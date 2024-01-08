@@ -211,7 +211,6 @@ void select_bigint256(bigint256 r, const bigint256 a, const bigint256 b, uint8_t
     uint64_t t;
     uint64_t mask;
 
-    // Write 1 here
     // 1. create mask. use the option variable
     mask = 0 - option;
 
@@ -230,7 +229,6 @@ void mod_exp(bigint256 r, const bigint256 a, const bigint256 e) {
 	  bigint256 t, t2;
 
     memcpy(t, a, sizeof(bigint256));
-    // Write 2 here. Do not write into r until the very end.
   
     for(j = 13; j >= 0; j--){
       
@@ -260,8 +258,6 @@ void keyGen(bigint256 sk, bigint256 pk) {
     const bigint256 g= {0x4855,0xafb3,0xe21b,0x24a6,0x98f0,0x02cd,0xff08,0xaaa1,0x379a,0x461e,0x08ea,0xc8e8,0xa1dd,0x2cd7,0x1d71,0x4f62};
     int i;
     
-    // Write 3 here
-    // Generate secret key here (first line is given to you)
     RANDOM_DATA(sk, sizeof(bigint256));  // This will read from the file once and fill sk with random data.
 
     for (i = 0; i < 16; i++){
@@ -278,8 +274,7 @@ void keyGen(bigint256 sk, bigint256 pk) {
 
 // Generate shared secret from your secret key and other party's public key
 void sharedSecret(bigint256 ss, const bigint256 sk, const bigint256 pk) {
-    // Write 4 here
-    // Compute shared secret here
+
     mod_exp(ss, pk, sk);
   
 
